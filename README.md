@@ -122,7 +122,7 @@ These files are hosted publicly in each of the cloud backends; see `backends/${b
 | :- | :- | :- | :- |
 | String | name | Reference name; used to name outputs (e.g., "GRCh38") | |
 | [IndexData](https://github.com/PacificBiosciences/wdl-common/blob/main/wdl/structs.wdl) | fasta | Reference genome and index | |
-| Array[String] | chromosomes | Chromosomes to phase, typically `chr{1..22} chr{X,Y}` | |
+| File | pbsv_splits | JSON file describing how to parallelize pbsv call. | Contents are Array[Array[String]] |
 | File | chromosome_lengths | Reference chromosome lengths | |
 | File | tandem_repeat_bed | Tandem repeat locations used by [pbsv](https://github.com/PacificBiosciences/pbsv) to normalize SV representation | |
 | File | trgt_tandem_repeat_bed | Tandem repeat sites to be genotyped by [TRGT](https://github.com/PacificBiosciences/trgt) | |
@@ -234,6 +234,8 @@ Docker images definitions used by this workflow can be found in [the wdl-dockerf
 
 The Docker image used by a particular step of the workflow can be identified by looking at the `docker` key in the `runtime` block for the given task. Images can be referenced in the following table by looking for the name after the final `/` character and before the `@sha256:...`. For example, the image referred to here is "align_hifiasm":
 > ~{runtime_attributes.container_registry}/**align_hifiasm**@sha256:3968cb<...>b01f80fe
+
+##todo: update table
 
 | Image | Major tool versions | Links |
 | :- | :- | :- |

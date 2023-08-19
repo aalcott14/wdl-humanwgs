@@ -19,7 +19,7 @@
       "data": "File",
       "data_index": "File"
     },
-    "chromosomes": "Array[String]",
+    "pbsv_splits": "File",
     "chromosome_lengths": "File",
     "tandem_repeat_bed": "File",
     "trgt_tandem_repeat_bed": "File",

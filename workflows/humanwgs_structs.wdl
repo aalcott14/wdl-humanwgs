@@ -6,7 +6,7 @@ struct ReferenceData {
 	String name
 	IndexData fasta
 
-	Array[String] chromosomes
+	File pbsv_splits
 	File chromosome_lengths
 
 	File tandem_repeat_bed

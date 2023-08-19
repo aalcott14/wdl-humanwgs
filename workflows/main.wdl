@@ -65,6 +65,7 @@ workflow humanwgs {
 				sample_ids = sample_id,
 				aligned_bams = flatten(sample_analysis.aligned_bams),
 				svsigs = flatten(sample_analysis.svsigs),
+				svsigs_indices = flatten(sample_analysis.svsigs_indices),
 				gvcfs = sample_analysis.small_variant_gvcf,
 				reference = reference,
 				pbsv_call_mem_gb = pbsv_call_mem_gb,
