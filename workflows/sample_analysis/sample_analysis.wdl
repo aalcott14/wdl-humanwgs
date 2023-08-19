@@ -288,7 +288,8 @@ task split_ubam{
 		> ~{sample_id}.~{movie}.read_quality_summary.tsv
 
 		# max reads per chunk is ceil(num_reads / num_chunks)
-		num_reads=$(cat ~{sample_id}.~{movie}.read_length_and_quality.tsv | wc -l)
+		num_reads=$(wc -l < ~{sample_id}.~{movie}.read_length_and_quality.tsv)
+		# shellcheck disable=SC2004
 		(( max_reads_per_chunk=(($num_reads + ~{num_chunks} - 1) / ~{num_chunks}) ))
 		echo "num_reads: $num_reads"
 		echo "num_chunks: ~{num_chunks}"
