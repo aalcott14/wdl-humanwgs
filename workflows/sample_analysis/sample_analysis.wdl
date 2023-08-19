@@ -308,7 +308,7 @@ task split_ubam{
 	}
 
 	runtime {
-		docker: "~{runtime_attributes.container_registry}/pysam@sha256:7c793937b5c0472c34b820b413decef1b74ce02767eafa65627da7e6e5028bf9"
+		docker: "~{runtime_attributes.container_registry}/pysam@sha256:1f0287b08550e3bf6ffd2624717f48939ac27af2802e1d5198b360ce8c72deed"
 		cpu: 2
 		memory: "8 GB"
 		disk: disk_size + " GB"
