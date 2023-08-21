@@ -31,7 +31,9 @@ workflow sample_analysis {
 				runtime_attributes = default_runtime_attributes
 		}
 
-		scatter (ubam_chunk in split_ubam.ubam_chunks) {
+		Array[File] ubam_chunks = select_first([split_ubam.ubam_chunks, [movie_bam]])
+
+		scatter (ubam_chunk in ubam_chunks) {
 			call pbmm2_align {
 				input:
 					sample_id = sample.sample_id,
@@ -287,18 +289,21 @@ task split_ubam{
 			| datamash -g 1 sum 2 sum 3 \
 		> ~{sample_id}.~{movie}.read_quality_summary.tsv
 
-		# max reads per chunk is ceil(num_reads / num_chunks)
-		num_reads=$(wc -l < ~{sample_id}.~{movie}.read_length_and_quality.tsv)
-		# shellcheck disable=SC2004
-		(( max_reads_per_chunk=(($num_reads + ~{num_chunks} - 1) / ~{num_chunks}) ))
-		echo "num_reads: $num_reads"
-		echo "num_chunks: ~{num_chunks}"
-		echo "max_reads_per_chunk: $max_reads_per_chunk"
+		if ~{num_chunks} > 1
+		then
+			# max reads per chunk is ceil(num_reads / num_chunks)
+			num_reads=$(wc -l < ~{sample_id}.~{movie}.read_length_and_quality.tsv)
+			# shellcheck disable=SC2004
+			(( max_reads_per_chunk=(($num_reads + ~{num_chunks} - 1) / ~{num_chunks}) ))
+			echo "num_reads: $num_reads"
+			echo "num_chunks: ~{num_chunks}"
+			echo "max_reads_per_chunk: $max_reads_per_chunk"
 
-		# split bam
-		split_bam.py --version
+			# split bam
+			split_bam.py --version
 
-		split_bam.py ~{bam} $max_reads_per_chunk
+			split_bam.py ~{bam} $max_reads_per_chunk
+		fi
 	>>>
 
 	output {
@@ -309,7 +314,7 @@ task split_ubam{
 	}
 
 	runtime {
-		docker: "~{runtime_attributes.container_registry}/pysam@sha256:d815a20224f08db414609d931ac1cc2f186f18e50555add5350f6909e15f800e"
+		docker: "~{runtime_attributes.container_registry}/pysam@sha256:1e0c0c3738139f4cc3632a3447152ce6397fd589a216c9f4dd604fb691219c1f"
 		cpu: 2
 		memory: "8 GB"
 		disk: disk_size + " GB"
