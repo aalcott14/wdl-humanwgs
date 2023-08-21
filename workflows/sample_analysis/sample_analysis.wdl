@@ -31,9 +31,7 @@ workflow sample_analysis {
 				runtime_attributes = default_runtime_attributes
 		}
 
-		Array[File] ubam_chunks = select_first([split_ubam.ubam_chunks, [movie_bam]])
-
-		scatter (ubam_chunk in ubam_chunks) {
+		scatter (ubam_chunk in if (length(split_ubam.ubam_chunks) > 0) then split_ubam.ubam_chunks else [movie_bam]) {
 			call pbmm2_align {
 				input:
 					sample_id = sample.sample_id,
@@ -289,8 +287,7 @@ task split_ubam{
 			| datamash -g 1 sum 2 sum 3 \
 		> ~{sample_id}.~{movie}.read_quality_summary.tsv
 
-		if ~{num_chunks} > 1
-		then
+		if (( ~{num_chunks} > 1 )); then
 			# max reads per chunk is ceil(num_reads / num_chunks)
 			num_reads=$(wc -l < ~{sample_id}.~{movie}.read_length_and_quality.tsv)
 			# shellcheck disable=SC2004
