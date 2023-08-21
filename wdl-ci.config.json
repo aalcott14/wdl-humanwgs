@@ -25,7 +25,7 @@
       "tasks": {
         "split_ubam": {
           "key": "split_ubam",
-          "digest": "cjonfmibefnpdn36rqxs5vihoccx7lxo",
+          "digest": "4qhe676whiyfbioccqmf4traknfw3ru5",
           "tests": [
             {
               "inputs": {
