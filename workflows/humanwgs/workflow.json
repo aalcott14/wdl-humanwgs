@@ -1,9 +1,9 @@
 {
-	"id": "humanwgs",
+	"id": "humanwgs-test1",
 	"schema": "v3",
-	"displayName": "Human WGS Workflow",
+	"displayName": "Human WGS Workflow (Test 1)",
 	"description": "Workflow for analyzing human PacBio whole genome sequencing (WGS) data using Workflow Description Language (WDL)",
-	"title": "wdl-humanwgs/humanwgs",
+	"title": "aalcott14/humanwgs-test1",
 	"workflowVersion": "v1.0.0",
 	"workflowLanguage": "wdl",
 	"categories": ["Genomics"],
