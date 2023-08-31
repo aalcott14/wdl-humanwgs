@@ -1,4 +1,6 @@
 ## JSON
+
+```
 {
   "humanwgs.cohort": {
     "cohort_id": "String",
@@ -60,3 +62,4 @@
   "humanwgs.aws_on_demand_queue_arn": "String? (optional); required if backend is set to 'AWS'",
   "humanwgs.preemptible": "Boolean"
 }
+```
