@@ -8,6 +8,7 @@ The human WGS workflow performs read alignment, variant calling and phasing. Joi
 
 ## Workflow Diagram
 ![Human WGS workflow diagram](/workflows/main.graphviz.svg "Human WGS workflow diagram")
+<img src="https://storage.googleapis.com/pacbio-humanwgs-references/main.graphviz.svg" alt="Human WGS workflow diagram" width="480"/>
 
 ## Tips and Tricks
 **Mandatory Inputs**: JSON specifying the cohort information.
