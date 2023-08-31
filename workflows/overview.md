@@ -13,3 +13,6 @@ The human WGS workflow performs read alignment, variant calling and phasing. Joi
 **Mandatory Inputs**: JSON specifying the cohort information.
 
 **Sample JSON**: [Template](workflows/input_template.json)
+
+## PacBio Github Details
+https://github.com/PacificBiosciences/wdl-humanwgs/blob/main/README.md
