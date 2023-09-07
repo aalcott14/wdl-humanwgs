@@ -117,14 +117,13 @@
     "lof_lookup": "gs://pacbio-wdl/dataset/slivar/lof_lookup.v2.1.1.txt",
     "clinvar_lookup": "gs://pacbio-wdl/dataset/slivar/clinvar_gene_desc.20221214T183140.txt"
   },
-  "humanwgs.deepvariant_version": "String (optional)",
-  "humanwgs.deepvariant_model": "WomCompositeType {\n model -> WomCompositeType {\n data -> File\ndata_index -> File \n}\nmetadata -> File \n}? (optional)",
-  "humanwgs.pbsv_call_mem_gb": "Int (optional, default = if N<=3: 64 else 96)",
-  "humanwgs.glnexus_mem_gb": "Int (optional, default = 30)",
-  "humanwgs.run_tertiary_analysis": "Boolean (optional, default = false)",
+  "humanwgs.deepvariant_version": "1.5.0",
+  "humanwgs.pbsv_call_mem_gb": 64,
+  "humanwgs.glnexus_mem_gb": 30,
+  "humanwgs.run_tertiary_analysis": false,
   "humanwgs.backend": "GCP",
-  "humanwgs.zones": "String",
-  "humanwgs.preemptible": "Boolean"
+  "humanwgs.zones": "us-central1-a",
+  "humanwgs.preemptible": false
 }
 ```
 
