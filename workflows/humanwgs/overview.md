@@ -7,7 +7,7 @@
 The human WGS workflow performs read alignment, variant calling and phasing. Joint-calling of small variants and structural variants for cohorts and optional variant filtering and annotation is also available. The workflow can run using Azure, AWS, GCP, and HPC backends.
 
 ## Workflow Diagram
-<img alt="Human WGS workflow diagram" width="480" src="workflows/main.graphviz.svg" />
+<img alt="Human WGS workflow diagram" width="480" src="https://storage.googleapis.com/public-workflow-assets-tundra-prd/63623032-0e1f-42da-9b2c-37efe8583338/wdl-humanwgs/humanwgs/main/main.graphviz.svg" />
 
 ## Tips and Tricks
 **Mandatory Inputs**: JSON specifying the cohort information.
